@@ -18,11 +18,13 @@ function generatePassword() {
   var upperArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
   var numberArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   var specialArray = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
+  var totalArray = [];
+  console.log(totalArray.length);
   //booleans to show whether each character type should be included. 
-  var lowerChoice; 
-  var upperChoice; 
-  var numberChoice; 
-  var specialChoice; 
+  var lowerChoice = false; 
+  var upperChoice = false; 
+  var numberChoice = false; 
+  var specialChoice = false; 
 
   //Pseudocode
 
@@ -51,6 +53,15 @@ function generatePassword() {
     // if/conditional check using || 
       //if true: continue to generate
       //if false: ask confirm
+
+  console.log(lowerChoice);
+  lowerChoice = confirm("Press OK to include lowercase letters in your password, press Cancel to exclude them.");
+  console.log(lowerChoice);
+  if (lowerChoice == true) {
+    totalArray = totalArray.concat(lowerArray);
+  }
+
+  console.log(totalArray);
 
   //Randomly generate password string from choices
     //arrays of lower, upper, nums, special
