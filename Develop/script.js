@@ -19,12 +19,14 @@ function generatePassword() {
   var numberArray = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   var specialArray = [' ', '!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`', '{', '|', '}', '~'];
   var totalArray = [];
+  var password = [];
   console.log(totalArray.length);
   //booleans to show whether each character type should be included. 
   var lowerChoice = false; 
   var upperChoice = false; 
   var numberChoice = false; 
   var specialChoice = false; 
+  var rand;
 
   //Pseudocode
 
@@ -92,6 +94,16 @@ function generatePassword() {
       //convert password array to string
       //return string
 
+  for(var i = 0; i<lengthChoice; i++){
+    //generate a random number to take a random character from totalArray
+    min = Math.ceil(0);
+    max = Math.floor(totalArray.length);
+    rand = Math.floor(Math.random() * (max - min) + min);
+    password[i] = totalArray[rand];
+  }
+
+  console.log(password);
+    
   //display password in textbox (write password to the page)
 }
 
