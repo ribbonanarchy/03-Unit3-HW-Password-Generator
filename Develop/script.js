@@ -61,8 +61,27 @@ function generatePassword() {
     totalArray = totalArray.concat(lowerArray);
   }
 
-  console.log(totalArray);
+  console.log(upperChoice);
+  upperChoice = confirm("Press OK to include uppercase letters in your password, press Cancel to exclude them.");
+  console.log(upperChoice);
+  if (upperChoice == true) {
+    totalArray = totalArray.concat(upperArray);
+  }
 
+  console.log(numberChoice);
+  numberChoice = confirm("Press OK to include numbers in your password, press Cancel to exclude them.");
+  console.log(numberChoice);
+  if (numberChoice == true) {
+    totalArray = totalArray.concat(numberArray);
+  }
+
+  console.log(specialChoice);
+  specialChoice = confirm("Press OK to include special characters in your password, press Cancel to exclude them.");
+  console.log(specialChoice);
+  if (specialChoice == true) {
+    totalArray = totalArray.concat(specialArray);
+  }
+  
   //Randomly generate password string from choices
     //arrays of lower, upper, nums, special
     //array of all chosen characters, concat?
