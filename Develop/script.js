@@ -29,72 +29,42 @@ function generatePassword() {
   var specialChoice = false; 
   var rand;
 
-  //Pseudocode
-
-  //Present user series of prompts/confirms
-    // length prompt - var lengthChoice
-      // let lengthChoice = prompt("What length?");
-    // lower confirm - var lowerChoice
-    // upper confirm - var upperChoice
-    // nums confirm - var numsChoice
-    // special confirm -var specialChoice
-
   //length prompt -> number b/w 8 and 128
-    // if/conditional to check if length b/w 8 and 128 
-      // if true: continue to confirms
-      // if false: send back to length prompt
-
   lengthChoice = prompt("How long would you like your password to be? Enter a number of characters between 8 and 128.");
 
+  //Input check, if the user chooses and invalid number ask for a new input until the one they give is valid
   while ((lengthChoice < 8) || (lengthChoice > 128)) {
     lengthChoice = prompt("Invalid input. How long would you like your password to be? Enter a number of characters between 8 and 128.");
   }
 
-  //confirm for lower, upper, nums, special
-  
-  //Input Validation - correct nums, at least 1 char chosen
-    // if/conditional check using || 
-      //if true: continue to generate
-      //if false: ask confirm
+  //confirm for lower, upper, nums, special, concatenate the corresponding array if the user does want that char type
 
-  console.log(lowerChoice);
   lowerChoice = confirm("Press OK to include lowercase letters in your password, press Cancel to exclude them.");
-  console.log(lowerChoice);
   if (lowerChoice == true) {
     totalArray = totalArray.concat(lowerArray);
   }
 
-  console.log(upperChoice);
   upperChoice = confirm("Press OK to include uppercase letters in your password, press Cancel to exclude them.");
-  console.log(upperChoice);
   if (upperChoice == true) {
     totalArray = totalArray.concat(upperArray);
   }
 
-  console.log(numberChoice);
   numberChoice = confirm("Press OK to include numbers in your password, press Cancel to exclude them.");
-  console.log(numberChoice);
   if (numberChoice == true) {
     totalArray = totalArray.concat(numberArray);
   }
 
-  console.log(specialChoice);
   specialChoice = confirm("Press OK to include special characters in your password, press Cancel to exclude them.");
-  console.log(specialChoice);
   if (specialChoice == true) {
     totalArray = totalArray.concat(specialArray);
   }
   
-  //Randomly generate password string from choices
-    //arrays of lower, upper, nums, special
-    //array of all chosen characters, concat?
-    //choose from the totality array number of chars required (equal to length prompt)
-      //for loop, run based on length prompt
-      //Math.random() choose index position from array
-      //grab from chosen array, add to password array (push?)
-      //convert password array to string
-      //return string
+//In the case that the user picks none of the character types, break and invite to try again
+if (!(lowerChoice || upperChoice || numberChoice || specialChoice)) {
+  window.alert("You must choose some characters to be included in your password. Try again!");
+}
 
+  //for loop to traverse the entire length of the password
   for(var i = 0; i<lengthChoice; i++){
     //generate a random number to take a random character from totalArray
     min = Math.ceil(0);
@@ -102,8 +72,6 @@ function generatePassword() {
     rand = Math.floor(Math.random() * (max - min) + min);
     password[i] = totalArray[rand];
   }
-
-  console.log(password);
     
   //convert to a string w/o commas instead of a char array
   var output = password.join("");
