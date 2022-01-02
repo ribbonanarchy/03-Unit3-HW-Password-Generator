@@ -8,6 +8,7 @@ function writePassword() {
 
   passwordText.value = password;
 
+  document.getElementById("password").innerHTML = passwordText;
 }
 
 function generatePassword() {
@@ -104,10 +105,11 @@ function generatePassword() {
 
   console.log(password);
     
-  //display password in textbox (write password to the page)
+  //convert to a string w/o commas instead of a char array
+  var output = password.join("");
+  // document.getElementById("password").innerHTML = output;
+  return output;
 }
-
-generatePassword();
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
